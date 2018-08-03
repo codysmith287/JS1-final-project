@@ -1,0 +1,38 @@
+.jumbotron {
+  background-image: url('../img/bg2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:110vh;
+  background-attachment: fixed;
+}
+
+.tagline {
+  font-family: 'Merriweather', serif;
+  text-shadow: 1px 2px 4px rgba(255,255,255,.9);
+  color: #202020;
+  padding-bottom: 30px;
+}
+
+.taskHeadings {
+font-family: 'Merriweather Sans', sans-serif;
+color: #202020;
+text-decoration: underline;
+}
+
+.greenShadow {
+  text-shadow: 1px 2px 4px rgba(51,111,15,.9);
+}
+
+.redShadow {
+  text-shadow: 1px 2px 4px rgba(126,33,15,.9);
+}
+
+.todosText {
+font-family: 'Merriweather Sans', sans-serif;
+}
+
+.todoTextBox {
+  width:50%;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  margin-bottom: 15px;
+}
