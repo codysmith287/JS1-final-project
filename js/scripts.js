@@ -6,23 +6,18 @@ const doneList = document.querySelector("#doneList");
 
 let todoArray = [];
 let doneArray = [];
-
-// Buttons
-
-// function buttonCreator() {
-// let buttonDiv = document.createElement("div");
-// let button = document.createElement("button");
-// let checkBtn = document.createElement("i");
-// checkBtn.classList.add("fas", "fa-check");
-// buttonDiv.appendChild(button);
-// button.appendChild(checkBtn);
-// };
-
+let checkBtnArray =[];
 
 // Add todo list items.
 
 todoForm.addEventListener("submit", e => {
   e.preventDefault();
+
+  let listItem;
+
+  //List Div
+  let listDiv = document.createElement("div");
+  listDiv.classList.add("listDiv");
 
   //Text Input
   let todoListItem = document.querySelector("#todoListItem").value;
@@ -36,7 +31,7 @@ todoForm.addEventListener("submit", e => {
   checkIcon.classList.add("fas", "fa-check", "checkBtn");
   buttonDiv.appendChild(checkBtn);
   checkBtn.appendChild(checkIcon);
-
+  // checkBtnArray.push(checkBtn);
 
   // Edit Button
   let editBtn = document.createElement("button");
@@ -45,6 +40,19 @@ todoForm.addEventListener("submit", e => {
   buttonDiv.appendChild(editBtn);
   editBtn.appendChild(editIcon);
 
+  // Finish Edit Button
+  let finishEditBtn = document.createElement("button");
+  let finishEditIcon = document.createElement("i");
+  finishEditIcon.classList.add("fas", "fa-user-check", "finishEditBtn");
+  finishEditBtn.appendChild(finishEditIcon);
+
+  // Undo button
+  let undoBtn = document.createElement("button");
+  let undoIcon = document.createElement("i");
+  undoIcon.classList.add("fas", "fa-undo-alt", "undoBtn");
+  undoBtn.appendChild(undoIcon);
+
+
   //Delete Button
   let deleteBtn = document.createElement("button");
   let deleteIcon = document.createElement("i");
@@ -52,33 +60,84 @@ todoForm.addEventListener("submit", e => {
   buttonDiv.appendChild(deleteBtn);
   deleteBtn.appendChild(deleteIcon);
 
-
   // console.log(todoListItem);
   if (todoListItem === ' ') {
     alert ("You cannot do nothing. Please enter an actual to-do task.")
   } else {
-    let listItem = document.createElement("li");
+    listItem = document.createElement("li");
     listItem.appendChild(document.createTextNode(todoListItem));
-    listItem.appendChild(buttonDiv);
-    todoList.appendChild(listItem);
-    todoArray.push([listItem]);
+    listDiv.appendChild(listItem);
+    listDiv.appendChild(buttonDiv);
+    todoList.appendChild(listDiv);
+    todoArray.push(todoList);
     console.log(todoArray);
   };
+
+  // Check Button Event Listener - line-through and append to doneList
+  checkBtn.addEventListener("click", e => {
+    listItem.classList.add("lineThrough");
+    buttonDiv.removeChild(checkBtn);
+    buttonDiv.replaceChild(undoBtn, editBtn);
+
+
+    var timer;
+    function doneTimer() {
+      timer = setTimeout(done, 1000);
+    };
+    function done() {
+      doneList.appendChild(listDiv);
+      doneArray.push(todoList);
+      // console.log(doneArray);
+    };
+    doneTimer();
+  });
+
+  // Edit Button Event Listener
+  editBtn.addEventListener('click', e => {
+    let placeholder = listItem.innerHTML;
+    let editInput = document.createElement("input");
+
+    editInput.setAttribute("type", "text");
+    editInput.setAttribute("required", "");
+    editInput.setAttribute("placeholder", `${placeholder}`);
+    editInput.classList.add("edit");
+
+    listDiv.replaceChild(editInput, listItem);
+    buttonDiv.replaceChild(finishEditBtn, editBtn);
+
+      finishEditBtn.addEventListener('click', e=> {
+        let editText = document.querySelector(".edit").value;
+        listItem = document.createElement("li");
+        listItem.appendChild(document.createTextNode(editText));
+        listDiv.replaceChild(listItem, editInput);
+        buttonDiv.replaceChild(editBtn, finishEditBtn);
+      });
+
+  });
+
+
+  // Delete Button Event Listener
+  deleteBtn.addEventListener('click', e => {
+    let areYouSure = confirm("Are you sure you want to delete this?");
+    if (areYouSure === true) {
+
+      let node = document.querySelector(".listDiv");
+      node.parentNode.removeChild(node);
+
+    } else {
+
+    };
+  });
+
+  // Undo Button Event
+  undoBtn.addEventListener('click', e => {
+    listItem.classList.remove("lineThrough");
+    todoList.appendChild(listDiv);
+    buttonDiv.replaceChild(editBtn, undoBtn);
+    buttonDiv.insertBefore(checkBtn, editBtn);
+
+  });
+
+
   todoForm.reset();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-// 1. When the submit button is clicked on your todo form, get the user input and add it to an array
-// 2. Create a function that will clear out the list and loop over the array to print out all of the todo items.
-// 3. Each todo item should have a button to delete the item and a checkbox to mark the item as finished by using strikethrough on the text for a handful of seconds, then remove the todo item and move it to the "done" list.
-// 4. The "done" list should be stored somewhere that persists so the user can come back to it. It should also disappear from the view after a couple minutes, but be able to be recalled by the click of a button.

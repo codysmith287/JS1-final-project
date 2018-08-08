@@ -42,9 +42,9 @@ text-decoration: none;
   font-size: 24px;
 }
 
-.buttonDiv {
-  text-align: right;
-  float: right;
+.listDiv{
+  display: flex;
+  justify-content: space-between;
 }
 
 .checkBtn {
@@ -53,14 +53,55 @@ text-decoration: none;
   width: 20px;
 }
 
+.checkBtn:hover {
+    color:#336f0f;
+    transition: 0.5s ease-in;
+}
+
 .editBtn {
   font-size: 20px;
   height: 16px;
   width: 20px;
 }
 
+.editBtn:hover {
+    color:#dbac42;
+    transition: 0.5s ease-in;
+}
+
+.finishEditBtn {
+  font-size: 20px;
+  height: 16px;
+  width: 20px;
+}
+
+.finishEditBtn:hover {
+  color:#dbac42;
+  transition: 0.5s ease-in;
+}
+
 .deleteBtn {
   font-size: 20px;
   height: 16px;
   width: 20px;
+}
+
+.deleteBtn:hover {
+    color:#b42527;
+    transition: 0.5s ease-in;
+}
+
+.undoBtn {
+  font-size: 20px;
+  height: 16px;
+  width: 20px;
+}
+
+.undoBtn:hover {
+  color:#1681f9;
+  transition: 0.5s ease-in;
+}
+
+.lineThrough {
+  text-decoration: line-through;
 }
