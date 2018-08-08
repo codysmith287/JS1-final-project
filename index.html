@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:700i" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -21,32 +22,40 @@
       </div>
       <div class="row">
         <div class = "col-md-12 text-center">
-          <input type="text" class="todoTextBox">
-          <button>Submit</button>
+          <form name="todoForm" id="todoForm">
+            <input type="text" name="todoText" id="todoListItem" class="todoTextBox" required>
+            <button id="submitBtn" type="submit">Submit</button>
+          </form>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 text-center taskHeadings redShadow">
           <h1>To Do:</h1>
-          <ul class="todoText">
+          <ul class="todoFont" id="todoList">
 
           </ul>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 text-center taskHeadings greenShadow">
           <h1>Done:</h1>
-          <ul class="todoText">
+          <ul class="todoFont" id="doneList">
 
           </ul>
         </div>
       </div>
-      <!-- <div class="text-center">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/jJowmZfwJwE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div> -->
     </div>
-
+    <!-- <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Need some motivation? Watch this.</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jJowmZfwJwE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>
