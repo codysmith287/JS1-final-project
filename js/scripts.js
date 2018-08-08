@@ -110,6 +110,7 @@ todoForm.addEventListener("submit", e => {
         listItem = document.createElement("li");
         listItem.appendChild(document.createTextNode(editText));
         listDiv.replaceChild(listItem, editInput);
+        editInput.classList.remove("edit");
         buttonDiv.replaceChild(editBtn, finishEditBtn);
       });
 
