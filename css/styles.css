@@ -1,8 +1,9 @@
 .jumbotron {
-  background-image: url('../img/bg2.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/bg2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 120vh;
+  min-height: 120vh;
+  max-height: 200vh;
   background-attachment: fixed;
 }
 
@@ -32,6 +33,7 @@ font-family: 'Merriweather Sans', sans-serif;
 font-size: 24px;
 text-align: left;
 text-decoration: none;
+overflow: scroll;
 }
 
 .todoTextBox {
@@ -104,4 +106,8 @@ text-decoration: none;
 
 .lineThrough {
   text-decoration: line-through;
+}
+
+.btn {
+  margin-top: -10px;
 }

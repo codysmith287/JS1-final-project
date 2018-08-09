@@ -82,7 +82,7 @@ todoForm.addEventListener("submit", e => {
 
     var timer;
     function doneTimer() {
-      timer = setTimeout(done, 1000);
+      timer = setTimeout(done, 5000);
     };
     function done() {
       doneList.appendChild(listDiv);
